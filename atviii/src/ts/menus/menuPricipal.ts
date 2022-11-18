@@ -16,6 +16,7 @@ export default class MenuPrincipal implements Menu {
         console.log(`----------------------`)
         console.log(`| 5 - Listar acomodações`)
         console.log(`| 6 - Realizar Hospedagem`)
+        console.log(`| 7 - Listar Hospedes`)
         console.log(`----------------------`)
         console.log(`****************************`)
         console.log(`| 0 - Sair`)

@@ -2,6 +2,7 @@ import Processo from "../abstracoes/processo"
 import MenuPrincipal from "../menus/menuPricipal"
 import GerarScript from "../script/script"
 import ListagemAcomodacoes from "./listagens/listagemAcomodacoes"
+import ListagemHospedes from "./listagens/listagemHospedes"
 import ListagemTitulares from "./listagens/listagemTitulares"
 import RealizarHospedagem from "./realizarHospedagem"
 import TipoCadastroCliente from "./tipoCadastroCliente"
@@ -46,6 +47,10 @@ export default class Principal extends Processo {
                 break
             case 6:
                 this.processo = new RealizarHospedagem()
+                this.processo.processar()
+                break
+            case 7:
+                this.processo = new ListagemHospedes()
                 this.processo.processar()
                 break
             case 0:
