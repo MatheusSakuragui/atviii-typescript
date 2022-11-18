@@ -1,10 +1,11 @@
 import Impressor from "../interfaces/impressor";
 import Cliente from "../modelos/cliente";
+import ImpressaorCliente from "./impressorCliente";
 import ImpressorDependentes from "./impressorDependentes";
 import ImpressorDocumentos from "./impressorDocumentos";
 import ImpressorEndereco from "./impressorEndereco";
 
-export default class ImpressaorCliente implements Impressor {
+export default class ImpressorDependente implements Impressor {
     private cliente: Cliente
     private impressor!: Impressor
 
@@ -12,7 +13,7 @@ export default class ImpressaorCliente implements Impressor {
         this.cliente = cliente
 
     }
-    imprimir(index?: number): string { 
+    imprimir(index?: number): string {       
         let impressao = `**********************************************************************************\n`
             + `| Nome: ${this.cliente.Nome}\n`
             + `| Nome social: ${this.cliente.NomeSocial}\n`
@@ -20,24 +21,14 @@ export default class ImpressaorCliente implements Impressor {
             + `| Data de cadastro: ${this.cliente.DataCadastro.toLocaleDateString()}`
 
         if(index != undefined ){
-            impressao = `************* INDEX DO CLIENTE: ${index.toString()} *************` + impressao
+            impressao = `************* INDEX DO DEPENDENTE: ${index.toString()} *************` + impressao
         }
 
-        this.impressor = new ImpressorEndereco(this.cliente.Endereco)
+        this.impressor = new ImpressorEndereco(this.cliente.Titular.Endereco.clonarEndereco())
         impressao = impressao + `\n${this.impressor.imprimir()}`
 
         this.impressor = new ImpressorDocumentos(this.cliente.Documentos)
         impressao = impressao + `\n${this.impressor.imprimir()}`
-
-        //this.impressor = new ImpressorDependentes(this.cliente.Dependentes)
-        //impressao = impressao + `\n${this.impressor.imprimir()}`
-
-        if(this.cliente.Titular != undefined){
-            impressao = impressao + `----------------- Titular -------------\n` 
-            this.impressor = new ImpressaorCliente(this.cliente.Titular)
-            impressao = impressao + `\n${this.impressor.imprimir()}`
-            impressao = impressao + `\n-------------------------------------------------------------`
-        }
 
 
         impressao = impressao + `\n**********************************************************************************`
