@@ -15,9 +15,9 @@ export default class ListagemAcomodacoes extends Processo {
         console.clear()
         console.log('Iniciando a listagem das acomodações ofertadas...')
         console.log(`-------------------------------------------------`)
-        this.acomodacoes.forEach(acomodacao => {
+        this.acomodacoes.forEach((acomodacao,index) => {
             this.impressor = new ImpressorAcomodacao(acomodacao)
-            console.log(this.impressor.imprimir())
+            console.log(this.impressor.imprimir(index))
             console.log(`-------------------------------------------------`)
         })
     }

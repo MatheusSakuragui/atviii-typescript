@@ -3,6 +3,7 @@ import MenuPrincipal from "../menus/menuPricipal"
 import GerarScript from "../script/script"
 import ListagemAcomodacoes from "./listagens/listagemAcomodacoes"
 import ListagemTitulares from "./listagens/listagemTitulares"
+import RealizarHospedagem from "./realizarHospedagem"
 import TipoCadastroCliente from "./tipoCadastroCliente"
 import TipoDeletarCliente from "./tipoDeletarCliente"
 import TipoEditarCliente from "./tipoEditarCliente"
@@ -43,7 +44,10 @@ export default class Principal extends Processo {
                 this.processo = new ListagemAcomodacoes()
                 this.processo.processar()
                 break
-
+            case 6:
+                this.processo = new RealizarHospedagem()
+                this.processo.processar()
+                break
             case 0:
                 this.execucao = false
                 console.log('Até logo!')

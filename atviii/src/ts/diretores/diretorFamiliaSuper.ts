@@ -3,7 +3,7 @@ import { NomeAcomadacao } from "../enumeracoes/NomeAcomadacao";
 import Acomodacao from "../modelos/acomodacao";
 import Diretor from "../abstracoes/diretor";
 
-export default class DiretorFamiliaMais extends Diretor<Acomodacao> {
+export default class DiretorFamiliaSuper extends Diretor<Acomodacao> {
 
     constructor() {
         super()
